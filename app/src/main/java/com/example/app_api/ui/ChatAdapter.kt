@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.app_api.R
 import com.example.app_api.model.Chat
 
-class ChatAdapter(private val chats: List<Chat>) : RecyclerView.Adapter<ChatAdapter.ChatViewHolder>() {
+class ChatAdapter(private var chats: List<Chat>) : RecyclerView.Adapter<ChatAdapter.ChatViewHolder>() {
     class ChatViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val textView: TextView = itemView.findViewById(R.id.textView)
     }
@@ -24,4 +24,9 @@ class ChatAdapter(private val chats: List<Chat>) : RecyclerView.Adapter<ChatAdap
     }
 
     override fun getItemCount() = chats.size
+
+    fun setChats(chats: List<Chat>) {
+        this.chats = chats
+        notifyDataSetChanged()
+    }
 }

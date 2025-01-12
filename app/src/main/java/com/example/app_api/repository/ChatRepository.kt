@@ -7,8 +7,7 @@ import com.example.app_api.model.ChatDao
 import com.example.app_api.network.ChatApiService
 
 class ChatRepository(private val chatDao: ChatDao, private val chatApiService: ChatApiService) {
-    //val allChats: LiveData<List<Chat>> = chatDao.getAll()
-    val allChats: LiveData<List<Chat>> = chatDao.getAll().asLiveData()
+    val allChats: LiveData<List<Chat>> = chatDao.getAll()
 
 
     suspend fun insert(chat: Chat) {
