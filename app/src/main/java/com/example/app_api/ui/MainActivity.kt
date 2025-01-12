@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.app_api.R
+import com.example.app_api.viewmodel.ChatViewModel
 
 /*class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -8,7 +8,8 @@ import com.example.app_api.model.Chat
 import com.example.app_api.model.ChatDatabase
 import com.example.app_api.network.ChatApi
 import com.example.app_api.repository.ChatRepository
-//import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class ChatViewModel(application: Application) : AndroidViewModel(application) {
     private val repository: ChatRepository
