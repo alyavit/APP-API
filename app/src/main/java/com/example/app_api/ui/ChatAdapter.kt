@@ -29,4 +29,9 @@ class ChatAdapter(private var chats: List<Chat>) : RecyclerView.Adapter<ChatAdap
         this.chats = chats
         notifyDataSetChanged()
     }
+
+    fun getChatId(position: Int): Int {
+        return chats[position].id
+    }
+
 }
