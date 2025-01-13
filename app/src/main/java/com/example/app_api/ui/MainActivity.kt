@@ -67,11 +67,6 @@ class MainActivity : AppCompatActivity() {
                 // Do nothing
             }
 
-            val fab = findViewById<FloatingActionButton>(R.id.fab)
-            fab.setOnClickListener {
-                val chat = Chat(0, "New Chat", false)
-                chatViewModel.insert(chat)
-            }
         })
     }
 }

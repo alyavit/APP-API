@@ -12,4 +12,15 @@ object ChatApi {
         .build()
 
     val chatApiService: ChatApiService = retrofit.create(ChatApiService::class.java)
+
+
+}
+
+object ChatApiAuth{
+    val retrofit = Retrofit.Builder()
+        .baseUrl("https://ngw.devices.sberbank.ru:9443/")
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+
+    val authApi = retrofit.create(GigaChatApiAuth::class.java)
 }
