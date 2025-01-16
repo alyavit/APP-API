@@ -1,13 +1,11 @@
 package com.example.app_api.viewmodel
 
+import ChatRepository
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.example.app_api.model.Chat
-import com.example.app_api.model.ChatDatabase
 import com.example.app_api.network.ChatApi
-import com.example.app_api.repository.ChatRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -26,11 +24,12 @@ class ChatViewModel(application: Application) : AndroidViewModel(application) {
         repository.insert(chat)
     }
 
+
     fun delete(chat: Chat) = viewModelScope.launch(Dispatchers.IO) {
         repository.delete(chat)
     }
 
-    fun getChatsFromApi() = viewModelScope.launch(Dispatchers.IO) {
-        repository.getChatsFromApi()
-    }
-}
+
+    fun sendMessage(chatId: Long, userMessage: String) = viewModelScope.launch(Dispatchers.IO) {
+        repository.sendMessage(chatId, userMessage)
+    }}

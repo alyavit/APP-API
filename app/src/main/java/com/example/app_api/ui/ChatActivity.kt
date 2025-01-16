@@ -1,23 +1,30 @@
-package com.example.app_api.ui
-
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.example.app_api.R
-import com.example.app_api.network.ChatApiService
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.app_api.viewmodel.ChatViewModel
 
 class ChatActivity : AppCompatActivity() {
-    private lateinit var chatApiService: ChatApiService
+    private val chatViewModel: ChatViewModel by viewModels()
+    private lateinit var adapter: MessageAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
 
-        val chatId = intent.getIntExtra("chatId", 0)
+        val chatId = intent.getLongExtra("chatId", 0L)
+        adapter = MessageAdapter()
+        messagesRecyclerView.layoutManager = LinearLayoutManager(this)
+        messagesRecyclerView.adapter = adapter
 
-        val sendMessageButton = findViewById<Button>(R.id.sendMessageButton)
+        chatViewModel.getMessages(chatId).observe(this) { messages ->
+            adapter.submitList(messages)
+        }
+
         sendMessageButton.setOnClickListener {
-            val message = messageEditText.text.toString()
-            chatApiService.sendMessage(chatId, message)
+            val userMessage = messageEditText.text.toString()
+            chatViewModel.sendMessage(chatId, userMessage)
+            messageEditText.text.clear()
         }
     }
 }

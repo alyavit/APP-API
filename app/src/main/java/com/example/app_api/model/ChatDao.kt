@@ -4,16 +4,26 @@ import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 
 @Dao
 interface ChatDao {
-    @Query("SELECT * FROM chat")
-    fun getAll(): LiveData<List<Chat>>
+    @Query("SELECT * FROM chats ORDER BY timestamp DESC")
+    fun getAllChats(): LiveData<List<ChatEntity>>
 
-    @Insert
-    fun insertAll(vararg chats: Chat)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertChat(chat: ChatEntity): Long
 
     @Delete
-    fun delete(chat: Chat)
+    suspend fun deleteChat(chat: ChatEntity)
+}
+
+@Dao
+interface MessageDao {
+    @Query("SELECT * FROM messages WHERE chatId = :chatId ORDER BY timestamp ASC")
+    fun getMessagesForChat(chatId: Long): LiveData<List<MessageEntity>>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertMessage(message: MessageEntity)
 }
