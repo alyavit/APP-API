@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="16dp">
+    android:layout_margin="25dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/grey"
+        android:background="@color/material_dynamic_neutral_variant95"
         android:id="@+id/cardContainer"
         android:orientation="vertical">
 
@@ -43,7 +43,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="@string/textforlocation"
+            android:fontFamily="sans-serif-thin"
+            android:text="Текущая локация - неизвестно"
+            android:textSize="12sp"
             app:layout_constraintBottom_toTopOf="@+id/location"
             app:layout_constraintStart_toEndOf="@+id/guideline"
             app:layout_constraintStart_toStartOf="@+id/location"
@@ -56,7 +58,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:ems="10"
-            android:hint="Show Location"
+            android:hint="Показать локацию"
             app:layout_constraintBottom_toTopOf="@+id/textForGender"
             app:layout_constraintStart_toEndOf="@+id/guideline"
             app:layout_constraintStart_toStartOf="@+id/textForGender"
