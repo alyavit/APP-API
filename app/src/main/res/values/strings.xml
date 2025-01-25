@@ -2,4 +2,6 @@
     <string name="app_name">APP-API</string>
     <string name="navigation_drawer_open">Nav_Open</string>
     <string name="navigation_drawer_close">Nav_Close</string>
+    <string name="gender">gender_value</string>
+    <string name="delete">delete_hint</string>
 </resources>
