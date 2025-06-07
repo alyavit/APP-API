@@ -1,4 +1,4 @@
-package com.example.app_api.navigation
+/*package com.example.app_api.navigation
 
 import android.os.Bundle
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -37,4 +37,4 @@ class NavigationDrawerActivity : AppCompatActivity() {
             true
         }
     }
-}
+}*/
