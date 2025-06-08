@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
                 is Response.Error -> {
-                   Log.d("TAG", "Error in MAinActivity_observee") // Показываем сообщение об ошибке
+                    Log.d("TAG", "Error in MAinActivity_observee") // Показываем сообщение об ошибке
                 }
             }
         })
