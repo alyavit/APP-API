@@ -41,11 +41,6 @@ class DataAdapter (private val context: Context, private val characterList: List
             context.startActivity(intent)
         }
     }
-
-    override fun getItemCount(): Int {
-        return characterList.size
-    }
-
     inner class DataViewHolder(itemView: View) :RecyclerView.ViewHolder(itemView){
         val characterImage: ImageView = itemView.findViewById(R.id.characterImage)
         val characterName: TextView = itemView.findViewById(R.id.characterName)
@@ -55,5 +50,10 @@ class DataAdapter (private val context: Context, private val characterList: List
         val gender: TextView = itemView.findViewById(R.id.gender)
         val container = itemView.findViewById<ConstraintLayout>(R.id.cardContainer)
     }
+    override fun getItemCount(): Int {
+        return characterList.size
+    }
+
+
 
 }
