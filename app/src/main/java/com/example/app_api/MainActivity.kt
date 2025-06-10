@@ -28,8 +28,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding=DataBindingUtil.setContentView(this,R.layout.activity_main)
-        //setContentView(R.layout.activity_main)
 
         val repository = (application as CharacterApplication).characterRepository
 
@@ -38,11 +38,15 @@ class MainActivity : AppCompatActivity() {
             MainViewModelFactory(repository)
         ).get(MainViewModels::class.java)
 
+        binding.apply {
+            characterRecyclerView.layoutManager = LinearLayoutManager(this@MainActivity)
+            adapter = DataAdapter(this@MainActivity, result)
+            characterRecyclerView.adapter = adapter
+        }
 
         mainViewModels.character.observe(this, {
             when (it) {
                 is Response.Loading -> {
-                    // Показываем прогресс
                 }
                 is Response.Success -> {
                     it.data?.let { characterList ->
@@ -70,6 +74,10 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+    private fun getList(character: List<Result>) {
+        result.addAll(character)
+        adapter.notifyDataSetChanged()
+    }
 
     private fun layoutManager(character: List<Result>) {
         val linearLayoutManager = LinearLayoutManager(this)
@@ -94,10 +102,6 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    private fun getList(character: List<Result>) {
-        result.addAll(character)
-        adapter.notifyDataSetChanged()
-    }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater: MenuInflater = menuInflater
