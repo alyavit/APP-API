@@ -14,10 +14,10 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_detail)
 
-        // Получение данных из Intent
+        // Получение данных из Intent/
         val character = intent.getParcelableExtra<Result>("character")
 
-        // Заполнение данных
+        // Заполнение данных/
         character?.let {
             binding.dCharacterName.text = it.name
             binding.dStatus.text = it.status
