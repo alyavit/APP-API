@@ -24,12 +24,6 @@ class MainViewModels(private val repository: CharacterRepository) : ViewModel() 
         }
     }
 
-    fun deleteAllData(){
-        viewModelScope.launch(Dispatchers.IO){
-            repository.deleteAllData()
-        }
-
-    }
 
     fun getMoreCharacters(page: Int) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -37,6 +31,12 @@ class MainViewModels(private val repository: CharacterRepository) : ViewModel() 
         }
     }
 
+    fun deleteAllData(){
+        viewModelScope.launch(Dispatchers.IO){
+            repository.deleteAllData()
+        }
+
+    }
     val character: LiveData<Response<CharacterList>>
         get() = repository.characters
 
