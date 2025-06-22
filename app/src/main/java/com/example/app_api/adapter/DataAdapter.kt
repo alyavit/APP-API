@@ -32,7 +32,7 @@ class DataAdapter (private val context: Context, private val characterList: List
         holder.gender.text = character.gender
         Glide.with(context).load(character.image).into(holder.characterImage)
         holder.container.setBackgroundColor(Color.parseColor(ColorPicker.getColor()))
-        // Обработка нажатия
+        // Обработка нажатия/
 
         holder.itemView.setOnClickListener {
             val intent = Intent(context, DetailActivity::class.java).apply {
@@ -53,7 +53,4 @@ class DataAdapter (private val context: Context, private val characterList: List
     override fun getItemCount(): Int {
         return characterList.size
     }
-
-
-
 }
